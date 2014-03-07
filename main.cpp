@@ -55,6 +55,7 @@ int main(int argc, char * argv[])
 
     // parse options
     go.parse(argc, argv, &p);
+    TRACE("First non option: %1").arg(go.getNonOptionPos());
 
     TRACE("END");
     return 0;
