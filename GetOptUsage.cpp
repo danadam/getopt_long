@@ -11,7 +11,6 @@ GetOptUsage::GetOptUsage(const GetOpt & go, int leftSpaceSize /*= 2*/, int midSp
     const std::string leftSpace(leftSpaceSize, ' ');
 
     typedef std::vector<std::string> StringList;
-    typedef StringList::iterator StringListIt;
     typedef StringList::const_iterator StringListCIt;
     StringList lines;
 
@@ -51,7 +50,7 @@ GetOptUsage::GetOptUsage(const GetOpt & go, int leftSpaceSize /*= 2*/, int midSp
 
     const std::string midSpace(midSpaceSize, ' ');
     ito = go.options_.begin();
-    StringListIt itl = lines.begin();
+    StringListCIt itl = lines.begin();
     std::ostringstream usage;
     for (; ito != go.options_.end() && itl != lines.end(); ++ito, ++itl)
     {
@@ -59,7 +58,7 @@ GetOptUsage::GetOptUsage(const GetOpt & go, int leftSpaceSize /*= 2*/, int midSp
             usage << '\n';
 
         const GetOpt::Option & option = *ito;
-        std::string & line = *itl;
+        const std::string & line = *itl;
 
         const int alignSize = maxLength - line.size();
         usage << line << std::string(alignSize, ' ') << midSpace << option.description;
