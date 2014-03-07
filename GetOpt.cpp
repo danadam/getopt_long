@@ -49,6 +49,8 @@ void GetOpt::parse(int argc, char * argv[], Listener * listener)
     if (!listener)
         return;
 
+    optind = 0;     // reset getopt parser
+
     int longIndex = 0;
     int rc = 0;
     while ((rc = getopt_long(argc, argv, opt_string_.c_str(), &sys_options_[0], &longIndex)) != -1)
