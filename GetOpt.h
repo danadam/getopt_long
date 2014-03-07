@@ -41,7 +41,7 @@ public:
      * argName - argument name if option accepts parameters (--name=argName or -n argName)
      * description - description for usage string
      */
-    bool addOption(const char * name, int letter, ArgType argType, const char * argName, const char * description);
+    bool addOption(const std::string & name, int letter, ArgType argType, const std::string & argName, const std::string & description);
 
     /*
      * Parse options and call listener on every valid option.

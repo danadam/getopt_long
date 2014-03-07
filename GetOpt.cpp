@@ -9,7 +9,7 @@ GetOpt::GetOpt()
     sys_options_.push_back(sysOption);
 }
 
-bool GetOpt::addOption(const char * name, int letter, ArgType argType, const char * argName, const char * description)
+bool GetOpt::addOption(const std::string & name, int letter, ArgType argType, const std::string & argName, const std::string & description)
 {
     Option option;
     option.name = name;
