@@ -53,7 +53,11 @@ int main(int argc, char * argv[])
     // create listener
     Printer p(u());
 
-    // parse options
+    TRACE("Parse options for the first time:");
+    go.parse(argc, argv, &p);
+    TRACE("First non option: %1").arg(go.getNonOptionPos());
+
+    TRACE("Parse options for the second time:");
     go.parse(argc, argv, &p);
     TRACE("First non option: %1").arg(go.getNonOptionPos());
 
