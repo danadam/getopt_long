@@ -1,6 +1,7 @@
 #include "GetOpt.h"
 
 GetOpt::GetOpt()
+    : first_non_option_pos_(0)
 {
     struct option sysOption = {
         NULL, false, NULL, 0
@@ -60,6 +61,13 @@ void GetOpt::parse(int argc, char * argv[], Listener * listener)
         else
             listener->onShortOption(rc, optarg);
     }
+
+    first_non_option_pos_ = optind;
+}
+
+int GetOpt::getNonOptionPos() const
+{
+    return first_non_option_pos_;
 }
 
 const struct option * GetOpt::sysOptions() const

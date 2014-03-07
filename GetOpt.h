@@ -70,6 +70,8 @@ private:
     SysOptionList sys_options_;
 
     std::string opt_string_;
+
+    int first_non_option_pos_;
 };
 
 #endif
