@@ -51,16 +51,16 @@ GetOptUsage::GetOptUsage(const GetOpt & go, int leftSpaceSize /*= 2*/, int midSp
     }
 
     const std::string midSpace(midSpaceSize, ' ');
-    GetOpt::OptionListCIt ito = go.options_.begin();
-    StringListCIt itl = lines.begin();
+    GetOpt::OptionListCIt itOptions = go.options_.begin();
+    StringListCIt itLines = lines.begin();
     std::ostringstream usage;
-    for (; ito != go.options_.end() && itl != lines.end(); ++ito, ++itl)
+    for (; itOptions != go.options_.end() && itLines != lines.end(); ++itOptions, ++itLines)
     {
-        if (ito != go.options_.begin())
+        if (itOptions != go.options_.begin())
             usage << '\n';
 
-        const GetOpt::Option & option = *ito;
-        const std::string & line = *itl;
+        const GetOpt::Option & option = *itOptions;
+        const std::string & line = *itLines;
 
         const int alignSize = maxLength - line.size();
         usage << line << std::string(alignSize, ' ') << midSpace << option.description;
