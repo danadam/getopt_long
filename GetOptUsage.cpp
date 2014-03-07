@@ -67,3 +67,8 @@ GetOptUsage::GetOptUsage(const GetOpt & go, int leftSpaceSize /*= 2*/, int midSp
     usage_ = usage.str();
 }
 
+std::string GetOptUsage::operator()() const
+{
+    return usage_;
+}
+

@@ -22,10 +22,7 @@ public:
     /*
      * Return usage string.
      */
-    std::string operator()()
-    {
-        return usage_;
-    }
+    std::string operator()() const;
 
 private:
     std::string usage_;
