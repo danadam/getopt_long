@@ -18,7 +18,7 @@ private:
 
 void Printer::onShortOption(char letter, const char * arg)
 {
-    TRACE("%1(): letter=%2, arg=%3").arg(__func__).arg(letter).arg(arg == NULL ? "NULL" : arg);
+    TRACE("%1(): letter=%2, arg='%3'").arg(__func__).arg(letter).arg(arg == NULL ? "NULL" : arg);
     if (letter == 'h' || letter == '?')
     {
         TRACE("\n%1").arg(usage_.c_str());
