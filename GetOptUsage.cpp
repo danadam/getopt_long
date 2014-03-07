@@ -15,15 +15,15 @@ GetOptUsage::GetOptUsage(const GetOpt & go, int leftSpaceSize /*= 2*/, int midSp
     StringList lines;
 
     unsigned int maxLength = 0;
-    for (GetOpt::OptionListCIt ito = go.options_.begin(), end = go.options_.end();
-            ito != end;
-            ++ito
+    for (GetOpt::OptionListCIt it = go.options_.begin(), end = go.options_.end();
+            it != end;
+            ++it
         )
     {
         std::ostringstream line;
         line << leftSpace;
 
-        const GetOpt::Option & option = *ito;
+        const GetOpt::Option & option = *it;
         const bool isLong = !option.name.empty();
 
         if (option.letter)
