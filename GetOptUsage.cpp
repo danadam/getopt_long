@@ -15,8 +15,10 @@ GetOptUsage::GetOptUsage(const GetOpt & go, int leftSpaceSize /*= 2*/, int midSp
     StringList lines;
 
     unsigned int maxLength = 0;
-    GetOpt::OptionListCIt ito = go.options_.begin();
-    for (; ito != go.options_.end(); ++ito)
+    for (GetOpt::OptionListCIt ito = go.options_.begin(), end = go.options_.end();
+            ito != end;
+            ++ito
+        )
     {
         std::ostringstream line;
         line << leftSpace;
@@ -49,7 +51,7 @@ GetOptUsage::GetOptUsage(const GetOpt & go, int leftSpaceSize /*= 2*/, int midSp
     }
 
     const std::string midSpace(midSpaceSize, ' ');
-    ito = go.options_.begin();
+    GetOpt::OptionListCIt ito = go.options_.begin();
     StringListCIt itl = lines.begin();
     std::ostringstream usage;
     for (; ito != go.options_.end() && itl != lines.end(); ++ito, ++itl)
