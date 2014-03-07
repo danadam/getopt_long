@@ -24,16 +24,24 @@ public:
 
     GetOpt();
 
+    // wrapper around values defined in getopt.h
+    enum ArgType
+    {
+        noArgument = no_argument,
+        requiredArgument = required_argument,
+        optionalArgument = optional_argument
+    };
+
     /*
      * Add new option.
      *
      * name - long name of the option
      * letter - short name of the option
-     * hasArg - define from getopt.h indicating if option has an argument: no_argument | required_argument | optional_argument
+     * argType - indicates if option has an argument
      * argName - argument name if option accepts parameters (--name=argName or -n argName)
      * description - description for usage string
      */
-    bool addOption(const char * name, int letter, int hasArg, const char * argName, const char * description);
+    bool addOption(const char * name, int letter, ArgType argType, const char * argName, const char * description);
 
     /*
      * Parse options and call listener on every valid option.
@@ -54,7 +62,7 @@ private:
     {
         std::string name;
         int letter;
-        int hasArg;
+        ArgType argType;
         std::string argName;
         std::string description;
     };

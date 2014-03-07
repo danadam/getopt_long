@@ -9,12 +9,12 @@ GetOpt::GetOpt()
     sys_options_.push_back(sysOption);
 }
 
-bool GetOpt::addOption(const char * name, int letter, int hasArg, const char * argName, const char * description)
+bool GetOpt::addOption(const char * name, int letter, ArgType argType, const char * argName, const char * description)
 {
     Option option;
     option.name = name;
     option.letter = isalnum(letter) ? letter : 0;
-    option.hasArg = hasArg;
+    option.argType = argType;
     option.argName = argName;
     option.description = description;
 
@@ -29,14 +29,14 @@ bool GetOpt::addOption(const char * name, int letter, int hasArg, const char * a
     if (option.letter > 0)
     {
         opt_string_ += option.letter;
-        if (hasArg == required_argument)
+        if (argType == requiredArgument)
             opt_string_ += ":";
-        else if (hasArg == optional_argument)
+        else if (argType == optionalArgument)
             opt_string_ += "::";
     }
 
     struct option sysOption = {
-        option.name.c_str(), option.hasArg, NULL, option.letter
+        option.name.c_str(), option.argType, NULL, option.letter
     };
     struct option terminator = sys_options_.back();
     sys_options_.back() = sysOption;

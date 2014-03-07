@@ -32,14 +32,14 @@ GetOptUsage::GetOptUsage(const GetOpt & go, int leftSpaceSize /*= 2*/, int midSp
         if (isLong)
             line << " --" << option.name;
 
-        if (option.hasArg == required_argument || option.hasArg == optional_argument)
+        if (option.argType == GetOpt::requiredArgument || option.argType == GetOpt::optionalArgument)
         {
-            if (option.hasArg == optional_argument)
+            if (option.argType == GetOpt::optionalArgument)
                 line << "[";
             if (isLong)
                 line << "=";
             line << option.argName;
-            if (option.hasArg == optional_argument)
+            if (option.argType == GetOpt::optionalArgument)
                 line << "]";
         }
 

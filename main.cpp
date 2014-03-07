@@ -37,15 +37,15 @@ int main(int argc, char * argv[])
 
     // add options
     GetOpt go;
-    go.addOption("both", 'b', no_argument, "", "both without arg");
-    go.addOption("bothreq", 'c', required_argument, "", "both with required arg");
-    go.addOption("bothopt", 'd', optional_argument, "", "both with optional arg");
-    go.addOption("", 's', no_argument, "", "only short without arg");
-    go.addOption("", 't', required_argument, "", "only short with required arg");
-    go.addOption("", 'u', optional_argument, "", "only short with optional arg");
-    go.addOption("long", 0, no_argument, "", "only long without arg");
-    go.addOption("longreq", 0, required_argument, "", "only long with required arg");
-    go.addOption("longopt", 0, optional_argument, "", "only long with optional arg");
+    go.addOption("both", 'b', GetOpt::noArgument, "", "both without arg");
+    go.addOption("bothreq", 'c', GetOpt::requiredArgument, "", "both with required arg");
+    go.addOption("bothopt", 'd', GetOpt::optionalArgument, "", "both with optional arg");
+    go.addOption("", 's', GetOpt::noArgument, "", "only short without arg");
+    go.addOption("", 't', GetOpt::requiredArgument, "", "only short with required arg");
+    go.addOption("", 'u', GetOpt::optionalArgument, "", "only short with optional arg");
+    go.addOption("long", 0, GetOpt::noArgument, "", "only long without arg");
+    go.addOption("longreq", 0, GetOpt::requiredArgument, "", "only long with required arg");
+    go.addOption("longopt", 0, GetOpt::optionalArgument, "", "only long with optional arg");
 
     // prepare usage string
     GetOptUsage u(go);
